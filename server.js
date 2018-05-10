@@ -9,10 +9,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-
-
-var article1={
-    title: 'Article one',
+var articles={
+    'article1':{
+        title: 'Article one',
     heading: 'Article one',
     date: '10 may 2018',
     content: `   
@@ -21,9 +20,26 @@ var article1={
             <p> This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.
             </p>
             <p> This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.
-            </p> 
-            `
+            </p> `
+        
+    },
+    'article2': {
+                title: 'Article two',
+                heading: 'Article two',
+                date: '10 may 2018',
+                content:  `<p> This is the ontent of article 2 </p>`
+            },  
+    'article3': {
+        title: 'Article three',
+        heading: 'Article three',
+        date: '10 may 2018',
+        content: 
+            `<p> This is the ontent of article 3</p> `
+        
+    },
+    
 };
+
 function createtemplate(data)
 {
     var title=data.title;
@@ -64,9 +80,10 @@ var htmltemplate= `
 return(htmltemplate);
 }
 
-app.get('/article1',function(req,res)
-{
-    res.send(createtemplate(article1));
+app.get('/:articlename',function(req,res)
+
+{articlename=req.paramas.articlename;
+    res.send(createtemplate(articles[articlename]));
 });
 app.get('/article2',function(req,res)
 {
