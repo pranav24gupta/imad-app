@@ -9,9 +9,64 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+
+
+var article1={
+    title: 'Article one',
+    heading: 'Article one',
+    date: '10 may 2018',
+    content: `   
+            <p> This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.
+            </p>
+            <p> This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.
+            </p>
+            <p> This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.This is the ontent of article 1.
+            </p> 
+            `
+};
+function createtemplate(data)
+{
+    var title=data.itle;
+    var date=data.date;
+    var heading=data.heading;
+    var content=data.content;
+    
+var htmltemplate= `
+    <html>
+    <head>
+        <title>
+           ${title}
+        </title>
+        <meta name="viewport" content="width=device-width , initial-scale=1" /> 
+        <link href="/ui/style.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <a href='/'> Home</a>
+        <div class="container">
+        <div>
+            <h1>
+               ${heading}
+            </h1>
+            
+        </div>
+        <hr/>
+        <div>
+            ${date}
+        </div>
+        <div>
+            ${content}
+        </div>
+        </div>
+    </body>
+</html>`
+;
+return(htmltemplate);
+}
+
 app.get('/article1',function(req,res)
 {
-    res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
+    res.send(createtemplate(article1));
 });
 app.get('/article2',function(req,res)
 {
