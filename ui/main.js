@@ -1,5 +1,5 @@
 console.log('Loaded!');
 //change text
-var element=document.getElementById('main-text')
+var element=document.getElementById('main-text');
 
-lement.innerHTML='new value'
+lement.innerHTML='new value';
